@@ -3,103 +3,636 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Hari Raya Idul Fitri 2025</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Selamat Hari Raya Idul Fitri 2025 - Fauzan Fuadi</title>
     <style>
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;400;700&family=Raleway:wght@300;400;700;900&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff;
-            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #0a1f30, #081221);
+            color: #eaeaea;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            z-index: 1;
             overflow: hidden;
         }
-
-        .container {
-            text-align: center;
+        
+        .mosque-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             position: relative;
-            z-index: 1;
-            padding-top: 20%;
+            margin-bottom: 2rem;
+            perspective: 1000px;
+        }
+        
+        .mosque {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200' %3E%3Cpath d='M400,20 L380,50 L420,50 Z' fill='%23216e4e'/%3E%3Cpath d='M400,40 L340,100 L460,100 Z' fill='%23216e4e'/%3E%3Cpath d='M340,100 L340,160 L460,160 L460,100 Z' fill='%23216e4e'/%3E%3Ccircle cx='400' cy='70' r='10' fill='%23ffdf7e'/%3E%3Crect x='380' y='160' width='40' height='40' fill='%23216e4e'/%3E%3Crect x='300' y='120' width='40' height='80' fill='%23216e4e'/%3E%3Crect x='460' y='120' width='40' height='80' fill='%23216e4e'/%3E%3Crect x='260' y='140' width='40' height='60' fill='%23216e4e'/%3E%3Crect x='500' y='140' width='40' height='60' fill='%23216e4e'/%3E%3Crect x='220' y='160' width='40' height='40' fill='%23216e4e'/%3E%3Crect x='540' y='160' width='40' height='40' fill='%23216e4e'/%3E%3Cpath d='M300,120 L300,110 A20,20 0 0,1 320,110 L320,120 Z' fill='%23216e4e'/%3E%3Cpath d='M340,100 L340,90 A20,20 0 0,1 360,90 L360,100 Z' fill='%23216e4e'/%3E%3Cpath d='M380,100 L380,90 A20,20 0 0,1 400,90 L400,100 Z' fill='%23216e4e'/%3E%3Cpath d='M420,100 L420,90 A20,20 0 0,1 440,90 L440,100 Z' fill='%23216e4e'/%3E%3Cpath d='M460,100 L460,90 A20,20 0 0,1 480,90 L480,100 Z' fill='%23216e4e'/%3E%3Cpath d='M480,120 L480,110 A20,20 0 0,1 500,110 L500,120 Z' fill='%23216e4e'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards 0.5s, floatMosque 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(33, 110, 78, 0.7));
+            transform-style: preserve-3d;
+        }
+        
+        .hanging-ketupat-left {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            left: calc(50% - 180px);
+            top: 30px;
+            transform-origin: top center;
+            animation: swingKetupat 5s ease-in-out infinite;
+        }
+        
+        .hanging-ketupat-right {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            right: calc(50% - 180px);
+            top: 30px;
+            transform-origin: top center;
+            animation: swingKetupat 5s ease-in-out infinite reverse;
+        }
+        
+        .hanging-string {
+            position: absolute;
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, #f8f8f8, #c9a55a);
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .ketupat-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #85b663, #5d8e3e);
+            transform: rotate(45deg);
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ketupat-pattern {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            background: linear-gradient(135deg, #b8ed97, #85b663);
+            transform: rotate(45deg);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .ketupat-pattern:before, .ketupat-pattern:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: rotate(45deg);
+        }
+        
+        .ketupat-pattern:before {
+            top: 50%;
+            left: -50%;
+        }
+        
+        .ketupat-pattern:after {
+            top: 0;
+            left: 0;
+            transform: rotate(135deg);
+        }
+        
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 1.5s;
+            color: #f8f8f8;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .greeting {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(45deg, #5ee0ff, #55e878, #ffe86d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: pop 0.8s ease forwards 2s;
+            text-shadow: 0 0 20px rgba(255, 223, 126, 0.4);
+            padding: 0.5rem;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .greeting:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid rgba(255, 223, 126, 0.3);
+            border-radius: 15px;
+            animation: borderPulse 3s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #f8f8f8;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 2.5s;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        
+        .name:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffe86d, transparent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 3s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            color: #b8b8b8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 3.5s;
+            position: relative;
+            padding: 0.5rem 2rem;
+        }
+        
+        .date:before, .date:after {
+            content: '✧';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffe86d;
+            font-size: 1.5rem;
+        }
+        
+        .date:before {
+            left: -10px;
+        }
+        
+        .date:after {
+            right: -10px;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+            opacity: 0;
         }
 
-        h1 {
-            font-size: 3em;
-            color: #4caf50;
-            animation: fadeIn 2s;
+        .crescent {
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            width: 80px;
+            height: 80px;
+            background-color: transparent;
+            box-shadow: 15px 15px 0 0 #ffdf7e;
+            border-radius: 50%;
+            transform: rotate(-45deg);
+            opacity: 0;
+            animation: fadeIn 2s ease forwards 2s, float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 223, 126, 0.7));
         }
-
-        h2 {
-            font-size: 2em;
-            color: #555;
-            animation: fadeIn 2s 1s;
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confettiFall 5s linear forwards;
+            z-index: -1;
         }
-
-        p {
-            font-size: 1.5em;
-            color: #333;
-            animation: fadeIn 2s 2s;
+        
+        /* Light rays */
+        .light-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            opacity: 0.4;
+            animation: rotate 60s linear infinite;
         }
-
-        .animation {
+        
+        .ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 223, 126, 0.2), transparent);
+            transform-origin: left center;
+        }
+        
+        /* Glowing orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 223, 126, 0.7), rgba(255, 223, 126, 0));
+            filter: blur(10px);
+            opacity: 0;
+            animation: orbGlow 8s ease-in-out infinite;
+        }
+        
+        /* Animated border */
+        .border-animation {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            overflow: hidden;
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, #5ee0ff, #55e878, #ffe86d, #5ee0ff);
+            border-image-slice: 1;
+            opacity: 0;
+            animation: borderFadeIn 2s ease forwards 4s, borderAnimate 10s linear infinite;
+            pointer-events: none;
+            z-index: -1;
         }
-
-        .icon {
+        
+        /* Takbir floating elements */
+        .takbir {
             position: absolute;
-            animation: float 5s infinite;
+            font-family: 'Amiri', serif;
+            color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            opacity: 0;
+            animation: floatUp 20s linear infinite;
         }
-
-        .ketupat {
-            width: 100px;
-            left: 10%;
-            animation-duration: 6s;
-        }
-
-        .bintang {
-            width: 50px;
-            left: 50%;
-            animation-duration: 4s;
-        }
-
-        .bulan {
-            width: 70px;
-            left: 80%;
-            animation-duration: 5s;
-        }
-
-        .masjid {
-            width: 120px;
-            left: 30%;
-            animation-duration: 7s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
+        
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        
+        @keyframes fadeUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pop {
+            0% { 
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-45deg); }
+            50% { transform: translateY(-15px) rotate(-45deg); }
+        }
+        
+        @keyframes floatMosque {
+            0%, 100% { transform: translateY(0) rotateX(2deg); }
+            50% { transform: translateY(-10px) rotateX(-2deg); }
+        }
+        
+        @keyframes swingKetupat {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        @keyframes borderPulse {
+            0%, 100% { border-color: rgba(255, 223, 126, 0.3); }
+            50% { border-color: rgba(255, 223, 126, 0.7); }
+        }
+        
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        @keyframes orbGlow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+        
+        @keyframes borderFadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.7; }
+        }
+        
+        @keyframes borderAnimate {
+            0% { border-image-source: linear-gradient(45deg, #5ee0ff, #55e878, #ffe86d, #5ee0ff); }
+            25% { border-image-source: linear-gradient(135deg, #5ee0ff, #55e878, #ffe86d, #5ee0ff); }
+            50% { border-image-source: linear-gradient(225deg, #5ee0ff, #55e878, #ffe86d, #5ee0ff); }
+            75% { border-image-source: linear-gradient(315deg, #5ee0ff, #55e878, #ffe86d, #5ee0ff); }
+            100% { border-image-source: linear-gradient(45deg, #5ee0ff, #55e878, #ffe86d, #5ee0ff); }
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="animation">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ketupat.svg/1200px-Ketupat.svg.png" class="icon ketupat" alt="Ketupat">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Star_icon.svg/1200px-Star_icon.svg.png" class="icon bintang" alt="Bintang">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Moon_and_star.svg/1200px-Moon_and_star.svg.png" class="icon bulan" alt="Bulan">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Masjid_icon.svg/1200px-Masjid_icon.svg.png" class="icon masjid" alt="Masjid">
-    </div>
     <div class="container">
-        <h1>Selamat Hari Raya Idul Fitri 2025</h1>
-        <h2>Dari: Fauzan Fuadi</h2>
-        <p>Mohon Maaf Lahir dan Batin</p>
+        <div class="mosque-container">
+            <div class="mosque"></div>
+            
+            <div class="hanging-ketupat-left">
+                <div class="hanging-string"></div>
+                <div class="ketupat-body">
+                    <div class="ketupat-pattern"></div>
+                </div>
+            </div>
+            
+            <div class="hanging-ketupat-right">
+                <div class="hanging-string"></div>
+                <div class="ketupat-body">
+                    <div class="ketupat-pattern"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="arabic">السلام عليكم ورحمة الله وبركاته</div>
+        <h1 class="greeting">Selamat Hari Raya Idul Fitri 1446 H</h1>
+        <div class="name">- Fauzan Fuadi -</div>
+        <p class="message">
+            Dengan kerendahan hati, saya mengucapkan Selamat Hari Raya Idul Fitri 1446 Hijriah. 
+            Taqabbalallahu minna wa minkum, semoga Allah menerima amal ibadah kita.
+            <br><br>
+            Mohon maaf lahir dan batin atas segala kesalahan dan kekhilafan.
+            Semoga kita dipertemukan kembali di Ramadhan tahun depan dalam keadaan sehat dan diberkahi.
+        </p>
+        <div class="date">1 Syawal 1446 H / April 2025</div>
+        
+        <div class="crescent"></div>
+        <div class="stars"></div>
+        <div class="light-rays"></div>
+        <div class="border-animation"></div>
     </div>
+
+    <script>
+        // Create stars with enhanced effect
+        const starsContainer = document.querySelector('.stars');
+        const numberOfStars = 150;
+        
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random size between 2-5px
+            const size = Math.random() * 3 + 2;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Random position
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            
+            // Random delay for twinkle animation
+            star.style.animationDelay = `${Math.random() * 4}s`;
+            
+            // Add star to container
+            starsContainer.appendChild(star);
+            
+            // Fade in with delay
+            setTimeout(() => {
+                star.style.opacity = Math.random() * 0.8 + 0.2;
+            }, Math.random() * 3000);
+        }
+        
+        // Create confetti - more stylish and elaborate
+        function createConfetti() {
+            for (let i = 0; i < 70; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Random colors - more gold and green tones
+                    const colors = ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff', '#38b000', '#ffdf7e', '#5d8e3e', '#216e4e', '#85b663'];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.backgroundColor = color;
+                    confetti.style.boxShadow = `0 0 5px ${color}`;
+                    
+                    // Random shape
+                    if (Math.random() > 0.5) {
+                        confetti.style.borderRadius = '50%';
+                    } else if (Math.random() > 0.5) {
+                        confetti.style.borderRadius = '3px';
+                        confetti.style.width = `${5 + Math.random() * 10}px`;
+                        confetti.style.height = `${5 + Math.random() * 10}px`;
+                    } else {
+                        // Star shape
+                        confetti.style.width = `${8 + Math.random() * 5}px`;
+                        confetti.style.height = `${8 + Math.random() * 5}px`;
+                        confetti.style.backgroundColor = 'transparent';
+                        confetti.style.boxShadow = 'none';
+                        confetti.style.borderLeft = `${4 + Math.random() * 4}px solid transparent`;
+                        confetti.style.borderRight = `${4 + Math.random() * 4}px solid transparent`;
+                        confetti.style.borderBottom = `${8 + Math.random() * 8}px solid ${color}`;
+                        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    }
+                    
+                    // Random position
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    
+                    // Random animation duration
+                    confetti.style.animationDuration = `${3 + Math.random() * 4}s`;
+                    
+                    // Add confetti to container
+                    document.querySelector('.container').appendChild(confetti);
+                    
+                    // Remove after animation completes
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 7000);
+                    
+                }, i * 100);
+            }
+        }
+        
+        // Create light rays for dramatic effect
+        const lightRays = document.querySelector('.light-rays');
+        const numRays = 24;
+        
+        for (let i = 0; i < numRays; i++) {
+            const ray = document.createElement('div');
+            ray.classList.add('ray');
+            ray.style.transform = `rotate(${(i * 360 / numRays)}deg)`;
+            lightRays.appendChild(ray);
+        }
+        
+        // Create glowing orbs
+        for (let i = 0; i < 5; i++) {
+            const orb = document.createElement('div');
+            orb.classList.add('orb');
+            
+            // Random size
+            const size = 30 + Math.random() * 100;
+            orb.style.width = `${size}px`;
+            orb.style.height = `${size}px`;
+            
+            // Random position
+            orb.style.top = `${Math.random() * 100}%`;
+            orb.style.left = `${Math.random() * 100}%`;
+            
+            // Random animation delay
+            orb.style.animationDelay = `${Math.random() * 8}s`;
+            
+            // Add to container
+            document.querySelector('.container').appendChild(orb);
+            
+            // Fade in with delay
+            setTimeout(() => {
+                orb.style.opacity = 0.2 + Math.random() * 0.4;
+            }, 3000 + i * 500);
+        }
+        
+        // Create floating Takbir text
+        const takbirTexts = ["الله أكبر", "لا إله إلا الله", "سبحان الله", "الحمد لله"];
+        
+        for (let i = 0; i < 10; i++) {
+            const takbir = document.createElement('div');
+            takbir.classList.add('takbir');
+            takbir.textContent = takbirTexts[Math.floor(Math.random() * takbirTexts.length)];
+            
+            // Random size
+            const size = 16 + Math.random() * 24;
+            takbir.style.fontSize = `${size}px`;
+            
+            // Random position
+            takbir.style.left = `${Math.random() * 100}%`;
+            takbir.style.top = `${Math.random() * 100 + 100}%`;
+            
+            // Random animation duration and delay
+            takbir.style.animationDuration = `${15 + Math.random() * 15}s`;
+            takbir.style.animationDelay = `${Math.random() * 10}s`;
+            
+            // Add to container
+            document.querySelector('.container').appendChild(takbir);
+        }
+        
+        // Create confetti on load
+        setTimeout(createConfetti, 1000);
+        
+        // Create more confetti every 7 seconds
+        setInterval(createConfetti, 7000);
+    </script>
 </body>
 </html>
