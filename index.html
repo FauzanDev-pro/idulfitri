@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Raya Idul Fitri 2025 - Fauzan Fuadi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0d1117;
+            color: #eaeaea;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+        
+        .greeting {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(45deg, #5ee0ff, #55e878, #ffe86d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: pop 0.8s ease forwards 1s;
+        }
+        
+        .name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #f8f8f8;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 1.5s;
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 2s;
+        }
+        
+        .date {
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            color: #b8b8b8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 2.5s;
+        }
+        
+        /* Decorative Elements */
+        .mosque {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 800px;
+            height: 200px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200' %3E%3Cpath d='M400,20 L380,50 L420,50 Z' fill='%23216e4e'/%3E%3Cpath d='M400,40 L340,100 L460,100 Z' fill='%23216e4e'/%3E%3Cpath d='M340,100 L340,160 L460,160 L460,100 Z' fill='%23216e4e'/%3E%3Ccircle cx='400' cy='70' r='10' fill='%23ffdf7e'/%3E%3Crect x='380' y='160' width='40' height='40' fill='%23216e4e'/%3E%3Crect x='300' y='120' width='40' height='80' fill='%23216e4e'/%3E%3Crect x='460' y='120' width='40' height='80' fill='%23216e4e'/%3E%3Crect x='260' y='140' width='40' height='60' fill='%23216e4e'/%3E%3Crect x='500' y='140' width='40' height='60' fill='%23216e4e'/%3E%3Crect x='220' y='160' width='40' height='40' fill='%23216e4e'/%3E%3Crect x='540' y='160' width='40' height='40' fill='%23216e4e'/%3E%3Cpath d='M300,120 L300,110 A20,20 0 0,1 320,110 L320,120 Z' fill='%23216e4e'/%3E%3Cpath d='M340,100 L340,90 A20,20 0 0,1 360,90 L360,100 Z' fill='%23216e4e'/%3E%3Cpath d='M380,100 L380,90 A20,20 0 0,1 400,90 L400,100 Z' fill='%23216e4e'/%3E%3Cpath d='M420,100 L420,90 A20,20 0 0,1 440,90 L440,100 Z' fill='%23216e4e'/%3E%3Cpath d='M460,100 L460,90 A20,20 0 0,1 480,90 L480,100 Z' fill='%23216e4e'/%3E%3Cpath d='M480,120 L480,110 A20,20 0 0,1 500,110 L500,120 Z' fill='%23216e4e'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: bottom;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards 3s;
+            z-index: -1;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+            opacity: 0;
+        }
+
+        .crescent {
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            width: 80px;
+            height: 80px;
+            background-color: transparent;
+            box-shadow: 15px 15px 0 0 #ffdf7e;
+            border-radius: 50%;
+            transform: rotate(-45deg);
+            opacity: 0;
+            animation: fadeIn 2s ease forwards 2s, float 6s ease-in-out infinite;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ff7e00, #ffdf7e);
+            box-shadow: 0 0 20px #ff7e00;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards, float 4s ease-in-out infinite;
+        }
+
+        .lantern:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ffdf7e;
+        }
+
+        .lantern:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 5px;
+            width: 20px;
+            height: 5px;
+            border-radius: 2px;
+            background-color: #ff7e00;
+        }
+        
+        /* Ketupat Icon */
+        .ketupat {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #85b663, #5d8e3e);
+            transform: rotate(45deg);
+            border-radius: 5px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards, float 5s ease-in-out infinite;
+        }
+
+        .ketupat:before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background: linear-gradient(135deg, #b8ed97, #85b663);
+            border-radius: 3px;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confettiFall 5s linear forwards;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pop {
+            0% { 
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-45deg); }
+            50% { transform: translateY(-15px) rotate(-45deg); }
+        }
+        
+        @keyframes lanternFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="arabic">السلام عليكم ورحمة الله وبركاته</div>
+        <h1 class="greeting">Selamat Hari Raya Idul Fitri 1446 H</h1>
+        <div class="name">- Fauzan Fuadi -</div>
+        <p class="message">
+            Dengan kerendahan hati, saya mengucapkan Selamat Hari Raya Idul Fitri 1446 Hijriah. 
+            Taqabbalallahu minna wa minkum, semoga Allah menerima amal ibadah kita.
+            <br><br>
+            Mohon maaf lahir dan batin atas segala kesalahan dan kekhilafan.
+            Semoga kita dipertemukan kembali di Ramadhan tahun depan dalam keadaan sehat dan diberkahi.
+        </p>
+        <div class="date">1 Syawal 1446 H / April 2025</div>
+        
+        <div class="mosque"></div>
+        <div class="crescent"></div>
+        <div class="stars"></div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.querySelector('.stars');
+        const numberOfStars = 100;
+        
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random size between 2-4px
+            const size = Math.random() * 2 + 2;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Random position
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            
+            // Random delay for twinkle animation
+            star.style.animationDelay = `${Math.random() * 4}s`;
+            
+            // Add star to container
+            starsContainer.appendChild(star);
+            
+            // Fade in with delay
+            setTimeout(() => {
+                star.style.opacity = Math.random() * 0.8 + 0.2;
+            }, Math.random() * 3000);
+        }
+        
+        // Create lanterns
+        const container = document.querySelector('.container');
+        for (let i = 0; i < 6; i++) {
+            const lantern = document.createElement('div');
+            lantern.classList.add('lantern');
+            
+            // Random position
+            lantern.style.left = `${10 + Math.random() * 80}%`;
+            lantern.style.top = `${10 + Math.random() * 40}%`;
+            
+            // Random animation delay
+            lantern.style.animationDelay = `${Math.random() * 2}s, ${Math.random() * 2}s`;
+            
+            // Add lantern to container
+            container.appendChild(lantern);
+            
+            // Fade in with delay
+            setTimeout(() => {
+                lantern.style.opacity = 1;
+            }, 2000 + i * 300);
+        }
+        
+        // Create ketupat icons
+        for (let i = 0; i < 5; i++) {
+            const ketupat = document.createElement('div');
+            ketupat.classList.add('ketupat');
+            
+            // Random position
+            ketupat.style.left = `${10 + Math.random() * 80}%`;
+            ketupat.style.bottom = `${10 + Math.random() * 30}%`;
+            
+            // Random animation delay
+            ketupat.style.animationDelay = `${2 + Math.random() * 2}s, ${Math.random() * 2}s`;
+            
+            // Add ketupat to container
+            container.appendChild(ketupat);
+            
+            // Fade in with delay
+            setTimeout(() => {
+                ketupat.style.opacity = 1;
+            }, 3000 + i * 300);
+        }
+        
+        // Create confetti
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // Random colors
+                    const colors = ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff', '#38b000'];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.backgroundColor = color;
+                    
+                    // Random shape
+                    if (Math.random() > 0.5) {
+                        confetti.style.borderRadius = '50%';
+                    } else {
+                        confetti.style.width = `${5 + Math.random() * 10}px`;
+                        confetti.style.height = `${5 + Math.random() * 10}px`;
+                        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    }
+                    
+                    // Random position
+                    confetti.style.left = `${Math.random() * 100}%`;
+                    
+                    // Random animation duration
+                    confetti.style.animationDuration = `${3 + Math.random() * 4}s`;
+                    
+                    // Add confetti to container
+                    container.appendChild(confetti);
+                    
+                    // Remove after animation completes
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 7000);
+                    
+                }, i * 100);
+            }
+        }
+        
+        // Create confetti on load
+        setTimeout(createConfetti, 1000);
+        
+        // Create more confetti every 7 seconds
+        setInterval(createConfetti, 7000);
+    </script>
+</body>
+</html>
